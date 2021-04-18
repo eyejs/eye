@@ -1,0 +1,254 @@
+<!--This is the first object created for eye.js Written by Raul Mendez Rodriguez-->
+
+<!--If you are looking for an explanation of the code, go to the example object-->
+
+<wrapper id="nav" class="eye-menu-horizontal-wrapper">
+
+    <div id="eye-menu-horizontal-top" class="eye-menu-horizontal-top">
+        <a id="brand" href="#" class="eye-menu-horizontal-brand">Brand</a>
+        <div id="eye-menu-horizontal-button" class="eye-menu-horizontal-button"><s class="bar"></s><s class="bar"></s>
+        </div>
+    </div>
+    <div class="eye-menu-horizontal-wrapper-list" id="eye-menu-horizontal-wrapper-list"">
+
+        <ul class=" eye-menu-list" id="eye-menu-list">
+        </ul>
+
+    </div>
+
+</wrapper>
+
+<script>
+    eye.script({
+        id: "nav",
+        brand: "Brand",
+        links: {},
+        onData(object, data) {
+
+            try {
+                data = JSON.parse(data);
+            } catch (error) {
+                console.error(error)
+            }
+
+            if (typeof data == 'object') {
+
+                if (typeof data.brand === 'string') {
+                    object.brand = data.brand;
+                }
+
+                if (typeof data.links == 'object') {
+                    for (let key in data.links) {
+                        object.links[key] = data.links[key];
+                    }
+                }
+
+            }
+        },
+        toggleLinks: function () {
+            $('eye-menu-horizontal-wrapper-list').classList.toggle(
+                'eye-menu-horizontal-wrapper-list-active');
+            $('eye-menu-horizontal-button').classList.toggle('x');
+        },
+        onShown: function (object) {
+            eye.event('eye-menu-horizontal-button', "click", object.toggleLinks);
+            $("brand").innerHTML = object.brand;
+
+            for (let key in object.links) {
+                $('eye-menu-list').innerHTML += '<li class="eye-menu-item"><a href="' + object.links[key] +
+                    '" class="eye-link">' + key + '</a></li>'
+            }
+        }
+    });
+</script>
+
+<style>
+    .eye-menu-horizontal-wrapper {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: auto;
+        color: #FFF;
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 20s ease infinite;
+        padding-bottom: 2px;
+        font-family: sans-serif;
+        z-index: 1000;
+    }
+
+    .eye-menu-horizontal-top {
+        position: relative;
+        padding: 10px 0px;
+        padding-bottom: 10px;
+        z-index: 2;
+        border-bottom: 1px solid #FFF;
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 20s ease infinite;
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .eye-menu-horizontal-brand {
+        display: block;
+        text-align: center;
+        position: relative;
+        font-size: 20px;
+        color: #FFF;
+        text-transform: uppercase;
+    }
+
+    .eye-menu-horizontal-button {
+        width: 40px;
+        height: 40px;
+        display: block;
+        position: absolute;
+        top: 3px;
+        right: 0;
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    .eye-menu-horizontal-button .bar {
+        background-color: white;
+        display: block;
+        width: 20px;
+        height: 2px;
+        border-radius: 100px;
+        position: absolute;
+        top: 20px;
+        right: 12px;
+    }
+
+    .eye-menu-horizontal-button .bar,
+    .eye-menu-horizontal-wrapper-list {
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+
+    .eye-menu-horizontal-button .bar:first-child {
+        -webkit-transform: translateY(-6px);
+        -moz-transform: translateY(-6px);
+        -ms-transform: translateY(-6px);
+        transform: translateY(-6px);
+    }
+
+    .eye-menu-horizontal-button.x .bar {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .eye-menu-horizontal-button.x .bar:first-child {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+
+    .eye-menu-horizontal-wrapper-list {
+        position: relative;
+        margin-top: -100px;
+        left: 0px;
+        height: auto;
+        display: block;
+        width: 100%;
+        overflow: auto;
+        z-index: -1;
+        text-align: center;
+    }
+
+    .eye-menu-horizontal-wrapper-list::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .eye-menu-horizontal-wrapper-list::-webkit-scrollbar-track {
+        background-color: transparent;
+
+    }
+
+    .eye-menu-horizontal-wrapper-list::-webkit-scrollbar-thumb {
+        opacity: 0;
+    }
+
+    .eye-menu-horizontal-wrapper-list:hover::-webkit-scrollbar-thumb {
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        opacity: 1;
+    }
+
+    .eye-menu-horizontal-wrapper-list-active {
+        margin-top: 0px;
+    }
+
+    .eye-menu-list {
+        display: flex;
+        display: inline-flex;
+    }
+
+    .eye-menu-item {
+        padding: 15px 40px;
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .eye-menu-item a {
+        color: #FFF;
+    }
+
+    @media (min-width: 992px) {
+        .eye-menu-horizontal-wrapper {
+            height: auto;
+            display: flex;
+            display: inline-flex;
+        }
+
+        .eye-menu-horizontal-top {
+            border: 0px;
+            padding-right: 40px;
+            padding-left: 40px;
+        }
+
+        .eye-menu-horizontal-button {
+            display: none;
+        }
+
+        .eye-menu-horizontal-wrapper-list {
+            border: 0px;
+            position: relative;
+            top: auto;
+            left: auto;
+            height: auto;
+            display: block;
+            width: 100%;
+            overflow: auto;
+            background-color: transparent;
+            z-index: -1;
+            text-align: right;
+            margin-top: auto;
+        }
+
+        .eye-menu-horizontal-wrapper-list-active {
+            margin-top: auto;
+        }
+    }
+</style>

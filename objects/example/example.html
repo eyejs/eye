@@ -1,0 +1,281 @@
+<!--The attributes of this tag (wrapper) will be kept as long as they are not overwritten from the eye tag in the main document -->
+<wrapper id="example" class="example-wrapper">
+
+    <div class="video-wrapper">
+        <video class="video" muted playsinline="true" autoplay="" src="#" id="example-video"
+            onended="this.style.opacity = 0.5"></video>
+    </div>
+
+    <div class="example-wrapper-text">
+        <h1 id="example-title" class="example-title">Test title</h1>
+        <h2 id="example-slogan" class="example-slogan">Initial slogan!</h2>
+        <a href="#" target="_blank" id="example-github">
+            <div class="github-button">
+                <img src="https://eyejs.org/things/github.svg" class="github-icon">
+                GITHUB
+            </div>
+        </a>
+        <a href="#" data-patreon-widget-type="become-patron-button" id="example-patreon">
+            Become a Patron!
+        </a>
+
+    </div>
+
+    <!--If you want to import an object within this object, you must create an eye tag with its two mandatory attributes and the third optional one-->
+    <!-- <eye type="idObject" src"http://object.path/object.html" data='to customize'></eye>-->
+
+</wrapper>
+
+<!--This tag (script) is not mandatory-->
+<script>
+
+    /** IMPORTANT: This must be the last function called within the script tag **/
+    //Again, this must be the last command called
+    eye.script({
+
+        //Mandatory variable on all objects
+        //Initially it must be equal to the id of the wrapper tag
+        id: "example",
+        //Then the object must be accessed with the function obj("objectId"); That is: obj("example")
+
+        //Have order in case of many objects.
+        //The root path will always be eye.go or eye['go']
+        //The final path of the object will be: eye.go.custom.acc
+        route: 'custom.acc',
+
+        //**Object variables
+        //With default values
+        title: "EYE.JS",
+        slogan: 'No slogan yet',
+        github: "https://github.com/eyejs/eye",
+        patreon: "https://www.patreon.com/bePatron?u=45506021",
+        video: "https://eyejs.org/things/eye-video.mp4",
+
+        //**METHODS
+        //This method is called from the content object
+        changeBackgroundColor: function (object) {
+
+            //Example Safe way
+            /*
+            eye.do(object.id, (element) => {
+            element.classList.toggle('color-blue');
+            });
+            */
+
+            //Example quick way
+            /*
+            $(object.id).classList.toggle('color-blue');
+            */
+        },
+
+        //**SPECIAL METHODS
+
+        //Called when eye receives the json parameter from the eye.script() command
+        // This function is removed after being called
+        onBeforeCreate: function () {},
+
+        //Called when the object has been stored in eye.go
+        //And it receives the final object as a parameter.
+        // This function is removed after being called
+        onCreate: function (finalObject) {},
+
+        //Called when styles are embedded in the main document head tag
+        // This function is removed after being called
+        onLoadedStyles: function () {},
+
+        //Called when wrapper tag starts to process
+        // This function is removed after being called
+        onbeforeShowing: function () {},
+
+        //Called if the data attribute exists in the eye tag in the main file that this object imports
+        //Receive as second parameter the value of the data attribute as a string
+        //This is the time to change the values of the object variables
+        //This function is removed after being called
+        onData: function (object, data) {
+            try {
+                data = JSON.parse(data);
+            } catch (error) {
+                console.error(error)
+            }
+
+            if (typeof data == 'object') {
+
+                if (typeof data.title === 'string') {
+                    object.title = data.title;
+                }
+
+                if (typeof data.slogan === 'string') {
+                    object.slogan = data.slogan;
+                }
+
+                if (typeof data.github === 'string') {
+                    object.github = data.github;
+                }
+
+                if (typeof data.patreon === 'string') {
+                    object.patreon = data.patreon;
+                }
+
+                if (typeof data.video === 'string') {
+                    object.video = data.video;
+                }
+
+            }
+        },
+
+        //Called immediately after changing eye tag in main file to object wrapper tag
+        //That is, when the content is printed on the screen
+        //Only until this method is called is it possible to access the elements with methods like getElementById
+        //This function remains in the object
+        //This is the time to add the events to the elements
+        onShown: function (object) {
+
+            //It is safer add the events with the function eye.event("elementId", "typeEvent", functionToCall, optionalParameter)
+            /*
+            eye.event(object.id, "click", function (element, optionalParameter) {
+            console.log(optionalParameter); //Print: Parameter
+            }, "Parameter");
+            */
+
+            //You can also do it the traditional way
+            /*
+            document.getElementById('example').addEventListener("click", object.changeBackgroundColor, false);
+            */
+
+            //This is also the time to print the data of the object variables on the screen.
+            //The function $("idElement") is equal to document.getElementById("idElement")
+            $('example-title').innerText = object.title;
+            $('example-slogan').innerText = object.slogan;
+            $('example-video').setAttribute('src', object.video);
+            $('example-github').setAttribute('href', object.github);
+            $('example-patreon').setAttribute('href', object.patreon);
+
+            //// Importing a script from a path is easy using the following method
+            // This is the only way to call a script. 
+            //And you should remove all script tags other than the ones containing the object, even within the wrapper tag
+            eye.import.script("https://c6.patreon.com/becomePatronButton.bundle.js");
+        },
+
+    });
+</script>
+
+<style>
+    .example-wrapper {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background-color: #f9f9f9;
+        color: #000;
+        z-index: 2;
+        text-align: center;
+        min-width: 320px;
+        min-height: 700px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana,
+            sans-serif;
+        overflow: auto;
+    }
+
+    .example-wrapper .example-wrapper-text {
+        width: 80%;
+        max-width: 400px;
+        height: 290px;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        text-align: center;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .example-title {
+        font-size: 35px;
+    }
+
+    .example-slogan {
+        font-size: 25px;
+        padding: 20px;
+        animation-iteration-count: infinite;
+        animation-duration: 7s;
+        animation-name: sentence-animation;
+        border: 3px solid rgba(255, 255, 255, 0);
+    }
+
+    @keyframes sentence-animation {
+        0% {
+            border: 3px solid rgba(0, 0, 0, 0);
+        }
+
+        20% {
+            border-top: 3px solid crimson;
+        }
+
+        40% {
+            border-right: 3px solid crimson;
+        }
+
+        60% {
+            border-bottom: 3px solid crimson;
+        }
+
+        80% {
+            border-left: 3px solid crimson;
+        }
+
+        100% {
+            border: 3px solid rgba(0, 0, 0, 0);
+        }
+
+    }
+
+    .video-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+    .video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center;
+    }
+
+    .github-button {
+        position: relative;
+        padding: 10px 20px 10px 50px;
+        display: inline-flex;
+        background-color: crimson;
+        color: #000;
+        border-radius: 10px;
+        margin: 30px auto 10px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .github-button:hover {
+        background-color: #FFF;
+        color: #333;
+    }
+
+    .github-icon {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 30px;
+        height: auto;
+    }
+</style>

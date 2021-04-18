@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EYE.JS</title>
+    <link rel="icon" type="image/png" href="http://eyejs.org/things/eye-icon.png" />
+
+    <!-- We import the main file of eye -->
+    <script src="https://eyejs.org/eye/eye.js"></script>
+
+</head>
+
+<body>
+
+
+    <!-- Start of HTML EYE Objects -->
+
+
+    <!-- Example of non-custom objects:
+    First object:
+    <eye type="nav" src="https://eyejs.org/objects/nav.html"></eye>
+    
+    Second object:
+    <eye type="example" src="https://eyejs.org/objects/example.html"></eye>
+    -->
+
+    <!--First complete object, this is type nav. 'nav' is the id of the object-->
+    <!--In the eye tag the src and type attributes are mandatory-->
+    <!--To customize the object use the data attribute-->
+    <!--The form that the value of the data attribute must have must be specified by each object creator-->
+    <eye type="nav" src="https://eyejs.org/objects/nav.html" data='{
+        "brand": "EYE.JS",
+        "links": {
+            "Home": "https://eyejs.org",
+            "Github": "https://github.com/eyejs/eye",
+            "Patreon": "https://www.patreon.com/bePatron?u=45506021"
+        }
+    }'></eye>
+    <!--This is the first eye object created and, if you want to customize, it requires a json object for the value of the data attribute-->
+    <!-- You can add as many links as you want -->
+
+
+    <!--Second object is type example-->
+    <!--Each complete eye tag is an object-->
+    <eye type="example" src="https://eyejs.org/objects/example.html" data='{
+        "title": "The beauty of simplicity!",
+        "slogan": "a whole world to create with just customizable HTML objects",
+        "github": "https://github.com/eyejs/eye",
+        "patreon": "https://www.patreon.com/bePatron?u=45506021",
+        "video": "https://eyejs.org/things/eye-video.mp4"
+    }'></eye>
+    <!--This object has a lot of comments inside the code, you can check it in the github repository-->
+    <!--Like the above object, if you want to customize it, it requires a json as data attribute value-->
+    <!-- title, tagline, github, patreon and video are your customizable fields -->
+    <!-- If they are not full, the object has default values -->
+
+
+    <!--End of HTML eye objects-->
+
+
+    <!--After the objects or at the end of the body tag, the eye.start () function should be called-->
+    <!--The function needs as a parameter the path of the eye.js containing folder-->
+    <script>
+        eye.start("../../eye/");
+    </script>
+
+</body>
+
+</html>
