@@ -73,7 +73,8 @@ Passing as a parameter the path of the folder where the constructor file is loca
 ```HTML
 <script>
     //eye.start("path/to/");
-    eye.start("eye/");
+    //eye.start("eye/");
+    eye.start("https://eyejs.org/eye/");
 </script>
 ```
 
