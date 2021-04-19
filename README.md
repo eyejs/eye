@@ -6,17 +6,20 @@ previously created customizable HTML objects. It is really easy using eye object
 You can see the example page in [eyejs.org](https://eyejs.org)
 
 
-## Start
+## Importing
 
-Once you have eye folder of this repository in your project, you can use Eye.js
-
-
-### Importing
-
+Once you have eye folder of this repository in your project, you can use Eye.js 
 Inside the head tag you should call the framework constructor
 
 ```HTML
-<script src="path/to/eye.js"></script>
+<script src="eye/eye.js"></script>
+```
+
+Or, just in testing, you can use the following script inside the head tag. 
+In this case you do not need to have the eye folder in your project.
+
+```HTML
+<script src="https://eyejs.org/eye/eye.js"></script>
 ```
 
 
