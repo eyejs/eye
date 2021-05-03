@@ -1,0 +1,325 @@
+<wrapper id="vertical-menu" class="eye-vertical-menu-wrapper">
+    <div id="eye-vertical-menu-top" class="eye-vertical-menu-top">
+        <a id="brand" href="#" class="eye-vertical-menu-brand">Brand</a>
+        <div id="eye-vertical-menu-button" class="eye-vertical-menu-button"><s class="bar"></s><s class="bar"></s>
+        </div>
+        <div id="eye-vertical-menu-image" class="eye-vertical-menu-image">
+
+        </div>
+    </div>
+    <div id="eye-vertical-menu-wrapper-list" class="eye-vertical-menu-wrapper-list">
+
+        <div id="eye-menu-list" class="eye-menu-list">
+        </div>
+
+    </div>
+</wrapper>
+
+<script>
+    eye.script({
+        core: "0.01",
+        id: "vertical-menu",
+        brand: "Brand",
+        img: "https://eyejs.org/things/eye-icon.png",
+        links: {},
+        onData(object, data) {
+
+            try {
+                data = JSON.parse(data);
+            } catch (error) {
+                console.error(error)
+            }
+
+            if (typeof data == 'object') {
+
+                if (typeof data.brand === 'string') {
+                    object.brand = data.brand;
+                }
+
+                if (typeof data.img === 'string') {
+                    object.img = data.img;
+                }
+
+                if (typeof data.links == 'object') {
+                    for (let key in data.links) {
+                        object.links[key] = data.links[key];
+                    }
+                }
+
+            }
+        },
+        toggleLinks: function () {
+            $('eye-vertical-menu-wrapper-list').classList.toggle(
+                'eye-vertical-menu-wrapper-list-active');
+            $('eye-vertical-menu-button').classList.toggle('x');
+        },
+        removeClass: function () {
+            $('eye-vertical-menu-wrapper-list').classList.remove(
+                'eye-vertical-menu-wrapper-list-active');
+            $('eye-vertical-menu-button').classList.remove('x');
+        },
+        onShown: function (object) {
+            eye.event('eye-vertical-menu-button', "click", object.toggleLinks);
+            $("brand").innerHTML = object.brand;
+            $("eye-vertical-menu-image").setAttribute("style", "background-image: url('" + object.img +
+                "');");
+
+            $('eye-menu-list').innerHTML = "";
+            for (let key in object.links) {
+                $('eye-menu-list').innerHTML += '<div class="eye-menu-item"><a href="' + object.links[
+                        key] +
+                    '" class="eye-link">' + key + '</a></div>'
+            }
+
+            eye.event(object.id, "focusout", object.removeClass);
+        }
+    });
+</script>
+
+<style>
+    a {
+        text-decoration: none;
+    }
+
+    .eye-vertical-menu-wrapper {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: auto;
+        color: #FFF;
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 20s ease infinite;
+        padding-bottom: 2px;
+        font-family: sans-serif;
+        z-index: 1000;
+
+    }
+
+    .eye-vertical-menu-top {
+        position: relative;
+        padding: 10px 0px;
+        padding-bottom: 10px;
+        z-index: 2;
+        border-bottom: 1px solid #FFF;
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 20s ease infinite;
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .eye-vertical-menu-brand {
+        display: block;
+        text-align: center;
+        position: relative;
+        font-size: 20px;
+        color: #FFF;
+        text-transform: uppercase;
+    }
+
+    .eye-vertical-menu-image {
+        display: none;
+        background-size: cover;
+        background-position: center;
+        width: 150px;
+        height: 150px;
+        margin: 20px auto;
+    }
+
+    .eye-vertical-menu-button {
+        width: 40px;
+        height: 40px;
+        display: block;
+        position: absolute;
+        top: 3px;
+        right: 0;
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    .eye-vertical-menu-button .bar {
+        background-color: white;
+        display: block;
+        width: 20px;
+        height: 2px;
+        border-radius: 100px;
+        position: absolute;
+        top: 20px;
+        right: 12px;
+    }
+
+    .eye-vertical-menu-button .bar,
+    .eye-vertical-menu-wrapper-list,
+    .eye-vertical-menu-brand,
+    .eye-vertical-menu-wrapper {
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+
+    .eye-vertical-menu-button .bar:first-child {
+        -webkit-transform: translateY(-6px);
+        -moz-transform: translateY(-6px);
+        -ms-transform: translateY(-6px);
+        transform: translateY(-6px);
+    }
+
+    .eye-vertical-menu-button.x .bar {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .eye-vertical-menu-button.x .bar:first-child {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+
+    .eye-vertical-menu-wrapper-list {
+        position: relative;
+        margin-top: -100px;
+        left: 0px;
+        height: auto;
+        display: block;
+        width: 100%;
+        overflow: auto;
+        z-index: -1;
+        text-align: center;
+    }
+
+    .eye-vertical-menu-wrapper-list::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .eye-vertical-menu-wrapper-list::-webkit-scrollbar-track {
+        background-color: transparent;
+
+    }
+
+    .eye-vertical-menu-wrapper-list::-webkit-scrollbar-thumb {
+        opacity: 0;
+    }
+
+    .eye-vertical-menu-wrapper-list:hover::-webkit-scrollbar-thumb {
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        opacity: 1;
+    }
+
+    .eye-vertical-menu-wrapper-list-active {
+        margin-top: 0px;
+    }
+
+    .eye-menu-list {
+        display: flex;
+        display: inline-flex;
+    }
+
+    .eye-menu-item {
+        padding: 15px 40px;
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .eye-menu-item a {
+        color: #FFF;
+    }
+
+    @media (min-width: 992px) {
+        body {
+            position: absolute;
+            top: 0px;
+            left: 20%;
+            width: 80%;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .eye-vertical-menu-wrapper {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 20%;
+            height: 100%;
+            color: #FFF;
+            overflow-y: auto;
+
+        }
+
+        .eye-vertical-menu-top {
+            position: relative;
+            padding: 10px 0px;
+            padding-bottom: 10px;
+            z-index: 2;
+            border: 0px;
+            background: transparent;
+            animation: none;
+            margin-top: 100px;
+        }
+
+
+        .eye-vertical-menu-brand {
+            display: none;
+        }
+
+        .eye-vertical-menu-image {
+            display: block;
+            border-radius: 50%;
+            border: 3px solid #FFF;
+        }
+
+        .eye-vertical-menu-button {
+            display: none;
+        }
+
+        .eye-vertical-menu-wrapper-list {
+            border: 0px;
+            position: relative;
+            height: auto;
+            display: block;
+            width: 70%;
+            overflow: none;
+            background-color: transparent;
+            z-index: -1;
+            text-align: center;
+            margin: auto;
+
+        }
+
+        .eye-menu-list {
+            display: block;
+            margin-bottom: 50px;
+        }
+
+        .eye-menu-item {
+            padding: 10px 0px;
+            width: 100%;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        .eye-menu-item a {
+            color: #FFF;
+        }
+    }
+</style>
