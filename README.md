@@ -12,14 +12,14 @@ Once you have eye folder of this repository in your project, you can use Eye.js
 Inside the head tag you should call the framework constructor
 
 ```HTML
-<script src="eye/eye.js"></script>
+<script src="eye/v0.01/eye.js"></script>
 ```
 
 Or, just in testing, you can use the following script inside the head tag. 
 In this case you do not need to have the eye folder in your project.
 
 ```HTML
-<script src="https://eyejs.org/eye/eye.js"></script>
+<script src="https://eyejs.org/eye/v0.01/eye.js"></script>
 ```
 
 
@@ -33,21 +33,22 @@ The src and type attributes are required:
 
 
 ```HTML
-<eye type="example" src="https://eyejs.org/objects/example.html"></eye>
+<eye type="eye_front_0" src="https://eyejs.org/eye/objects/front_0/object.html"></eye>
 ```
 
 The data attribute is optional and is used to customize the object. <br>
 The format of the value of this attribute can change according to how the object is made.
 Object creators must give instructions to customize the objects.
-The following example shows that the data attribute of the eye tag can be filled with a json.
 
 ```HTML
-<eye type="example" src="https://eyejs.org/objects/example.html" data='{
-        "title": "The beauty of simplicity!",
-        "slogan": "a whole world to create with just customizable HTML objects",
-        "github": "https://github.com/eyejs/eye",
-        "patreon": "https://www.patreon.com/bePatron?u=45506021",
-        "video": "https://eyejs.org/things/eye-video.mp4"
+<eye type="eye_front_0" src="https://eyejs.org/eye/objects/front_0/object.html" data='{
+        "title": "EYE",
+        "subtitle": "Keep it simple",
+        "button": ["Store","https://eyejs.org/store/"],
+        "buttonColor": "crimson",
+        "note": "Raúl Méndez Rodríguez",
+        "backgroundColor": "red",
+        "urlImage": "image.png"
     }'></eye>
 ```
 
@@ -55,12 +56,14 @@ Only the value of the data attribute is shown here:
 
 ```JSON
 {
-"title": "The beauty of simplicity!",
-"slogan": "a whole world to create with just customizable HTML objects",
-"github": "https://github.com/eyejs/eye",
-"patreon": "https://www.patreon.com/bePatron?u=45506021",
-"video": "https://eyejs.org/things/eye-video.mp4"
-}
+    "title": "EYE",
+    "subtitle": "Keep it simple",
+    "button": ["Store","https://eyejs.org/store/"],
+    "buttonColor": "crimson",
+    "note": "Raúl Méndez Rodríguez",
+    "backgroundColor": "red",
+    "urlImage": "image.png"
+    }
 ```
 
 
@@ -74,7 +77,7 @@ Passing as a parameter the path of the folder where the constructor file is loca
 <script>
     //eye.start("path/to/");
     //eye.start("eye/");
-    eye.start("https://eyejs.org/eye/");
+    eye.start("https://eyejs.org/eye/v0.01/");
 </script>
 ```
 

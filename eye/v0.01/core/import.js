@@ -1,12 +1,4 @@
 eye.import = {
-    script: function (route) {
-        console.log(route);
-        fetch(route).then(function (response) {
-            response.text().then(data => {
-                eval(data);
-            });
-        });
-    },
     start: function (parentElement) {
         let root = document.body;
         if (isDefined(parentElement)) {
@@ -18,6 +10,7 @@ eye.import = {
         }
     },
     getEyeElements: function (root) {
+
         let objectElement = function (type, src, root) {
             return {
                 type: type,

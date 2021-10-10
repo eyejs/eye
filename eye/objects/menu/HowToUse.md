@@ -8,7 +8,7 @@ For real projects, change the src attribute to the address of the locally stored
 <br>
 
 ```HTML
-<eye type="horizontal-menu" src="https://eyejs.org/objects/menu/horizontal.html" data='{
+<eye type="horizontal-menu" src="https://eyejs.org/eye/objects/menu/horizontal.html" data='{
         "brand": "EYE.JS",
         "links": {
             "Home": "https://eyejs.org",
@@ -32,7 +32,7 @@ The position key can take two values: <code> fixed </code> or <code> relative </
 ##### Vertical
 
 ```HTML
-<eye type="nav" src="https://eyejs.org/objects/menu/vertical.html"  data='{
+<eye type="nav" src="https://eyejs.org/eye/objects/menu/vertical.html"  data='{
         "brand": "EYE.JS",
         "links": {
             "Home": "https://eyejs.org",

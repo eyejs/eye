@@ -1,0 +1,20 @@
+# EYE.JS
+
+### How to use
+
+```HTML
+<eye type="eye_front_0" src="https://eyejs.org/eye/objects/front_0/object.html" data='{
+        "title": "EYE",
+        "subtitle": "Keep it simple",
+        "button": ["Store","https://eyejs.org/store/"],
+        "buttonColor": "crimson",
+        "note": "Raúl Méndez Rodríguez",
+        "backgroundColor": "red",
+        "urlImage": "image.png"
+    }'></eye>
+```
+
+Keep keys and change only values
+
+
+

@@ -77,18 +77,17 @@ eye.require = {
             return wrapper;
         }
 
-
         for (let i = 0, element; element = eyeElements.copys[i]; i++) {
-            let parentElement = wrapperId;
+            let parentElementC = wrapperId;
             if (i > 0) {
-                parentElement = wrapperId + "-copy-" + i;
+                parentElementC = wrapperId + "-copy-" + i;
                 element.setAttribute('id', wrapperId + "-copy-" + i);
             }
             let newElement = attribts(element, wrapper, object);
 
-            eyeElements.root.replaceChild(newElement, element);
+            element.parentNode.replaceChild(newElement, element);
             eye.require.check(object, 'onShown', false);
-            eye.import.start(parentElement);
+            eye.import.start(parentElementC);
         }
 
         for (let i = 0, element; element = eyeElements.clones[i]; i++) {
@@ -98,10 +97,11 @@ eye.require = {
             let newElement = attribts(element, wrapper, object);
             newElement.setAttribute('id', newObject.id);
 
-            eyeElements.root.replaceChild(newElement, element);
+            element.parentNode.replaceChild(newElement, element);
             eye.require.check(newObject, 'onShown', false);
             eye.import.start(newObject.id);
         }
+
     },
     createClone: function (element, object, cloneNumber) {
 
