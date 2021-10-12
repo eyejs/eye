@@ -8,7 +8,7 @@ For real projects, change the src attribute to the address of the locally stored
 <br>
 
 ```HTML
-<eye type="horizontal-menu" src="https://eyejs.org/eye/objects/menu/horizontal.html" data='{
+<eye type="horizontal-menu" src="https://eyejs.org/objects/v1.0/menu/horizontal.html" data='{
         "brand": "EYE.JS",
         "links": {
             "Home": "https://eyejs.org",
@@ -16,7 +16,8 @@ For real projects, change the src attribute to the address of the locally stored
             "Patreon": "https://www.patreon.com/bePatron?u=45506021",
             "Contact": "#contact"
         },
-        "position": "fixed"
+        "position": "fixed",
+        "background": "#000"
     }'></eye>
 ```
 

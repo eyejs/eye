@@ -33,7 +33,7 @@ The src and type attributes are required:
 
 
 ```HTML
-<eye type="eye_front_0" src="https://eyejs.org/eye/objects/front_0/object.html"></eye>
+<eye type="eye_front_0" src="https://eyejs.org/objects/v1.0/front_0/object.html"></eye>
 ```
 
 The data attribute is optional and is used to customize the object. <br>
@@ -41,7 +41,7 @@ The format of the value of this attribute can change according to how the object
 Object creators must give instructions to customize the objects.
 
 ```HTML
-<eye type="eye_front_0" src="https://eyejs.org/eye/objects/front_0/object.html" data='{
+<eye type="eye_front_0" src="https://eyejs.org/objects/v1.0/front_0/object.html" data='{
         "title": "EYE",
         "subtitle": "Keep it simple",
         "button": ["Store","https://eyejs.org/store/"],
@@ -58,7 +58,7 @@ Only the value of the data attribute is shown here:
 {
     "title": "EYE",
     "subtitle": "Keep it simple",
-    "button": ["Store","https://eyejs.org/store/"],
+    "button": ["Store","#"],
     "buttonColor": "crimson",
     "note": "Raúl Méndez Rodríguez",
     "backgroundColor": "red",

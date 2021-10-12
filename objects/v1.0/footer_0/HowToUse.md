@@ -7,7 +7,7 @@ The <code> data </code> attribute expects a json object.<br>
 <br>
 
 ```HTML
-<eye type="footer_0" src="../footer_0/object.html" data='{
+<eye type="footer_0" src="https://eyejs.org/objects/v1.0/footer_0/object.html" data='{
         "background": "black",
         "footer": [
             {

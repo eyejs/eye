@@ -3,10 +3,10 @@
 ### How to use
 
 ```HTML
-<eye type="eye_front_0" src="https://eyejs.org/eye/objects/front_0/object.html" data='{
+<eye type="eye_front_0" src="https://eyejs.org/objects/v1.0/front_0/object.html" data='{
         "title": "EYE",
         "subtitle": "Keep it simple",
-        "button": ["Store","https://eyejs.org/store/"],
+        "button": ["Store","#url"],
         "buttonColor": "crimson",
         "note": "Raúl Méndez Rodríguez",
         "backgroundColor": "red",
