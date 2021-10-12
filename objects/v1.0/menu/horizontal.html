@@ -20,6 +20,7 @@
         brand: "Brand",
         position: "fixed",
         links: {},
+        background: "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
         onData(object, data) {
 
             try {
@@ -46,6 +47,9 @@
                     }
                 }
 
+                if (typeof data.background === 'string') {
+                    object.background = data.background;
+                }
             }
         },
         toggleLinks: function () {
@@ -70,6 +74,27 @@
 
             if (object.position == "relative") {
                 $(object.id).classList.add('eye-horizontal-menu-wrapper-relative');
+            }
+
+            $("horizontal-menu").style.background = object.background;
+            $("horizontal-menu").style.backgroundSize = "400% 400%";
+            $("eye-horizontal-menu-top").style.background = object.background;
+            $("eye-horizontal-menu-top").style.backgroundSize = "400% 400%";
+
+            if (object.background == "#FFF" ||
+                object.background == "#FFFFFF" ||
+                object.background == "white" ||
+                object.background == "rgb(255,255,255)") {
+                
+                    $("brand").style.color = "#000";
+                    for (var i = 0, element; element = byClass('eye-link')[i]; i++) {
+                        element.style.color = "#000";
+                    }
+                    for (var i = 0, element; element = byClass('bar')[i]; i++) {
+                        element.style.backgroundColor = "#000";
+                    }
+
+                    $("horizontal-menu").style.borderBottom = "1px solid #333";
             }
         }
     });
@@ -248,6 +273,7 @@
             height: auto;
             display: flex;
             display: inline-flex;
+            align-items: center;
         }
 
         .eye-horizontal-menu-top {
@@ -256,7 +282,6 @@
             padding-left: 40px;
             position: relative;
             background: transparent;
-            top: 4px;
         }
 
         .eye-horizontal-menu-button {

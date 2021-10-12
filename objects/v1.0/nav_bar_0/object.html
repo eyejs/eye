@@ -1,0 +1,226 @@
+<wrapper id="eye_nav_bar_0">
+
+    <div id="eye_nav_bar_0_m" class="eye-nav-bar-0-m">
+        <div class="eye-nav-bar-0-options" id="eye_nav_bar_0_options">
+        </div>
+    </div>
+
+    <div id="eye_nav_bar_0_button" class="eye-nav-bar-0-button">
+        <s class="eye-nav-bar-0-button-bar"></s><s class="eye-nav-bar-0-button-bar"></s>
+    </div>
+
+</wrapper>
+
+<script>
+    eye.script({
+        version: "1.01",
+        core: "0.01",
+        id: "eye_nav_bar_0",
+        links: {},
+        background: "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
+        onData(object, data) {
+            try {
+                data = JSON.parse(data);
+            } catch (error) {
+                console.error(error)
+            }
+
+            if (typeof data == 'object') {
+                for (let key in data.links) {
+                    object.links[key] = data.links[key];
+                }
+
+                if (typeof data.background === 'string') {
+                    object.background = data.background;
+                }
+
+            }
+
+        },
+        toggleOptions: function () {
+            $('eye_nav_bar_0').classList.toggle('eye-nav-bar-0-active');
+            $('eye_nav_bar_0_button').classList.toggle('x');
+            for (var i = 0, element; element = byClass('eye-nav-bar-0-option')[i]; i++) {
+                element.classList.toggle('active');
+            }
+        },
+        onShown: function (object) {
+            eye.event('eye_nav_bar_0_button', "click", object.toggleOptions);
+
+            for (let key in object.links) {
+                $('eye_nav_bar_0_options').innerHTML += '<a href="' + object.links[key] +
+                    '" class="eye-nav-bar-0-option">' + key + '</a>';
+            }
+
+            $("eye_nav_bar_0_m").style.background = object.background;
+            $("eye_nav_bar_0_m").style.backgroundSize = "400% 400%";
+            if (object.background == "#FFF" ||
+                object.background == "#FFFFFF" ||
+                object.background == "white" ||
+                object.background == "rgb(255,255,255)") {
+                for (var i = 0, element; element = byClass('eye-nav-bar-0-option')[i]; i++) {
+                    element.style.color = "#000";
+                }
+                for (var i = 0, element; element = byClass('eye-nav-bar-0-button-bar')[i]; i++) {
+                    element.style.backgroundColor = "#000";
+                }
+            }
+
+        }
+    });
+</script>
+
+<style>
+    .eye-nav-bar-0-m {
+        align-items: center;
+        background-color: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 20s ease infinite;
+        display: flex;
+        flex-direction: column;
+        font-family: sans-serif;
+        font-size: 28px;
+        position: fixed;
+        overflow: hidden;
+        width: 40px;
+        height: 40px;
+        top: 10px;
+        right: 10px;
+        border-radius: 3px;
+        color: transparent;
+        z-index: 1100;
+    }
+
+    .eye-nav-bar-0-active .eye-nav-bar-0-m {
+        border-radius: 0px;
+        top: 0px;
+        right: 0px;
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+        color: #FFF;
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .eye-nav-bar-0-m::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .eye-nav-bar-0-m::-webkit-scrollbar-track {
+        background-color: transparent;
+
+    }
+
+    .eye-nav-bar-0-m::-webkit-scrollbar-thumb {
+        opacity: 0;
+    }
+
+    .eye-nav-bar-0-m:hover::-webkit-scrollbar-thumb {
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        opacity: 1;
+    }
+
+    .eye-nav-bar-0-options {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin-top: 60px;
+        margin-bottom: 60px;
+        transform: scale(0.8);
+    }
+
+    .eye-nav-bar-0-option {
+        cursor: pointer;
+        margin: 8px 0;
+        border: 3px solid transparent;
+        text-decoration: none;
+        font-family: sans-serif;
+
+    }
+
+    .eye-nav-bar-0-active .eye-nav-bar-0-m a {
+        color: transparent;
+        font-size: 26px;
+    }
+
+
+    .eye-nav-bar-0-active .eye-nav-bar-0-m .eye-nav-bar-0-options a:hover {
+        border-bottom: 3px solid #333;
+        color: #333;
+    }
+
+    .eye-nav-bar-0-active .eye-nav-bar-0-m .eye-nav-bar-0-options a {
+        transform: scale(1);
+        color: #FFF;
+        font-size: 28px;
+    }
+
+    .eye-nav-bar-0-button {
+        width: 40px;
+        height: 40px;
+        display: block;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        z-index: 1101;
+    }
+
+    .eye-nav-bar-0-button .eye-nav-bar-0-button-bar {
+        background-color: #DDD;
+        width: 20px;
+        height: 2px;
+        border-radius: 100px;
+        position: absolute;
+        top: 22px;
+        right: 10px;
+    }
+
+    .eye-nav-bar-0-button .eye-nav-bar-0-button-bar,
+    .eye-nav-bar-0-options a,
+    .eye-nav-bar-0-m {
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+
+    .eye-nav-bar-0-button .eye-nav-bar-0-button-bar:first-child {
+        -webkit-transform: translateY(-6px);
+        -moz-transform: translateY(-6px);
+        -ms-transform: translateY(-6px);
+        transform: translateY(-6px);
+    }
+
+    .eye-nav-bar-0-button.x .eye-nav-bar-0-button-bar {
+        background-color: white;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .eye-nav-bar-0-button.x .eye-nav-bar-0-button-bar:first-child {
+        background-color: white;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+</style>

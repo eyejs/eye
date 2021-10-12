@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EyeJS.org</title>
+    <link rel="icon" type="image/png" href="./things/eye.png" />
+
+     <!-- Import eye.js-->
+    <!-- src for testing -->
+    <script src="https://eyejs.org/eye/v0.01/eye.js"></script>
+
+    <!-- <script src="path/to/eye/v0.01/eye.js"></script> -->
+    <!-- For production, the src attribute must be replaced by the path of the eye.js file -->
+
+</head>
+<body>
+
+    <!-- EYE OBJECT
+    <eye type="eye_nav_bar_0" src="../objects/v1.0/nav_bar_0/object.html" data='{
+        "links":{
+            "Home": "https://eyejs.org",
+            "Github": "https://github.com/eyejs/eye",
+            "Patreon": "https://www.patreon.com/bePatron?u=45506021"
+        },
+        "background": "red"
+    }'></eye>
+    -->
+    
+    <eye type="horizontal-menu" src="../objects/v1.0/menu/horizontal.html" data='{
+        "brand": "EyeJS.org",
+        "links": {
+            "Home": "https://eyejs.org",
+            "Github": "https://github.com/eyejs/eye",
+            "Patreon": "https://www.patreon.com/bePatron?u=45506021",
+            "Contact": "#contact"
+        },
+        "position": "relative",
+        "background": "white"
+    }'></eye>
+    
+    <eye type="eye_front_0" src="../objects/v1.0/front_0/object.html" data='{
+        "title": "EYE",
+        "subtitle": "Keep it simple",
+        "button": ["Store","#"],
+        "buttonColor": "red",
+        "note": "Raúl Méndez Rodríguez",
+        "backgroundColor": "crimson",
+        "urlImage": "things/eye.png"
+    }'></eye>
+
+    <eye type="footer_0" src="../objects/v1.0/footer_0/object.html" data='{
+        "background": "white",
+        "footer": [
+            {
+                "title": "Information",
+                "links": {
+                    "About Us": "#",
+                    "Store": "#",
+                    "Privacy Policy": "#",
+                    "Terms & Conditions": "#"
+                }
+            },
+            {
+                "title": "Customer Service",
+                "links": {
+                    "Contact Us": "#",
+                    "Site Map": "#"
+                }
+            },
+            {
+                "title": "Extras",
+                "links": {
+                    "Brands": "#"
+                }
+            },
+            {
+                "title": "My Account",
+                "links": {
+                    "My Account": "#",
+                    "Order History": "#"
+                }
+            }
+        ],
+        "note": "Made in Costa Rica<br>EyeJS 2021"
+    }'></eye>
+    
+    <!-- End EYE object -->
+    
+    <!-- Start EYE -->
+    <script>
+        eye.start("https://eyejs.org/eye/v0.01/");
+
+        // eye.start("path/to/eye/v0.01/");
+        /* For production, the parameter must be replaced by the folder where the eye.js file is located */
+    </script>
+
+</body>
+</html>

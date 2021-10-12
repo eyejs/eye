@@ -1,6 +1,6 @@
 <wrapper id="eye_front_0" class="eye-front-0">
 
-    <div class="eye-front-0-letters">
+    <div id="eye_front_0_letters" class="eye-front-0-letters">
         <h1 id="eye_front_0_title">Hola Mundo! Hola Mundo! Hola Mundo! <br>Hola Mundo! Hola Mundo! Hola Mundo! </h1>
         <h2 id="eye_front_0_subtitle">rgméndezr</h2>
         <a id="eye_front_0_button" href="#">Start</a>
@@ -13,7 +13,7 @@
 
 <script>
     eye.script({
-        version: "1",
+        version: "1.01",
         core: "0.01",
         id: "eye_nav_bar_0",
 
@@ -87,6 +87,14 @@
             $("eye_front_0_note").innerHTML = object.data.note;
 
             $("eye_front_0").style.backgroundColor = object.data.backgroundColor;
+
+            if (object.data.backgroundColor == "#FFF" ||
+                object.data.backgroundColor == "#FFFFFF" ||
+                object.data.backgroundColor == "white" ||
+                object.data.backgroundColor == "rgb(255,255,255)") {
+                    $("eye_front_0_letters").style.color = "#000";
+                
+            }
 
             $("eye_front_0_image").style.backgroundImage = "url('"+ object.data.urlImage +"')";
 
