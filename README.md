@@ -75,7 +75,7 @@ See the [LICENSE](LICENSE) file for details
 ## Get involved
 
 * Tell others about this project
-* Become backer [Patreon Eye.js](https://www.patreon.com/bePatron?u=45506021)
+* [Become backer](https://github.com/sponsors/rgmendezr)
 * or just say thank you if the project helps you
 
 ## One last thing
