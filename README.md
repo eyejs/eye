@@ -1,7 +1,10 @@
-# EYE.JS v0.02
+# EYE.JS v0.03
 
 Wanting to help with the way a website is programmed, I have written a small framework for code reuse and use of
 previously created customizable HTML objects. It is really easy using eye objects.
+
+
+[Example](https://almendro.cr/eye/example/)
 
 
 ## Importing
@@ -10,14 +13,14 @@ Once you have eye folder of this repository in your project, you can use Eye.js
 Inside the head tag you should call the framework constructor
 
 ```HTML
-<script src="eye/v0.02/eye.js"></script>
+<script src="eye/v0.03/eye.js"></script>
 ```
 
 Or, just in testing, you can use the following script inside the head tag. 
 In this case you do not need to have the eye folder in your project.
 
 ```HTML
-<script src="https://almendro.cr/eye/v0.02/eye.js"></script>
+<script src="https://almendro.cr/eye/v0.03/eye.js"></script>
 ```
 
 ## eye object
@@ -31,13 +34,7 @@ Static object example:
 Custom object example:
 
 ```HTML
-<eye src="path/to/object.html" data='Hello!'></eye>
-```
-
-or maybe:
-
-```HTML
-<eye id="example_id" src="path/to/object.html" data='{"name":"example", "type": "json"}'></eye>
+<eye id="example_id" src="path/to/object.html" props='{"name":"example", "type": "json"}'></eye>
 ```
 
 Soon more details and examples
@@ -52,7 +49,7 @@ Passing as a parameter the path of the folder where the constructor file is loca
 <script>
     //eye.start("path/to/");
     //eye.start("eye/");
-    eye.start("https://almendro.cr/eye/v0.02/");
+    eye.start("https://almendro.cr/eye/v0.03/");
 </script>
 ```
 
@@ -75,7 +72,7 @@ See the [LICENSE](LICENSE) file for details
 ## Get involved
 
 * Tell others about this project
-* Become backer [Patreon Eye.js](https://www.patreon.com/bePatron?u=45506021)
+* [Become backer](https://github.com/sponsors/rgmendezr)
 * or just say thank you if the project helps you
 
 ## One last thing

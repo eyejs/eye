@@ -1,0 +1,111 @@
+<wrapper class="example-wrapper">
+    <div class="video-wrapper">
+        <video class="video" muted playsinline="true" autoplay="" e-src="video" id="example-video"></video>
+    </div>
+    <div class="example-wrapper-text">
+        <h1 id="example-title" class="example-title">#title</h1>
+        <h2 id="example-slogan" class="example-slogan">#slogan</h2>
+        <a e-href="github" target="_blank" id="example-github">
+            <div class="github-button">
+                <img src="../example/things/github.svg" class="github-icon">
+                GITHUB
+            </div>
+        </a>
+    </div>
+</wrapper>
+
+<script code>
+    var code = {
+        core: "0.03",
+        id: "head",
+        vars: {
+            title: "EYE.JS",
+            slogan: 'No slogan yet',
+            github: "https://github.com/eyejs/eye",
+            video: "../example/things/video.mp4",
+        }
+    };
+</script>
+
+<style>
+    .example-wrapper {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background-color: #666;
+        color: #FFF;
+        z-index: 2;
+        text-align: center;
+        min-width: 320px;
+        min-height: 500px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana,
+            sans-serif;
+        overflow: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .example-wrapper .example-wrapper-text {
+        width: 80%;
+        max-width: 400px;
+        height: 290px;
+        text-transform: uppercase;
+    }
+
+    .example-title {
+        font-size: 35px;
+    }
+
+    .example-slogan {
+        font-size: 25px;
+        padding: 20px;
+    }
+
+    .video-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+    .video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center;
+        opacity: 0.5;
+    }
+
+    .github-button {
+        position: relative;
+        width: 200px;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #FFF;
+        color: #333;
+        border-radius: 10px;
+        margin: 30px auto 10px;
+        font-size: 20px;
+        font-weight: bold;
+        height: 60px;
+    }
+
+    .github-icon {
+        width: 30px;
+        height: auto;
+        margin-right: 13px;
+    }
+</style>
