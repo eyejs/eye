@@ -125,6 +125,8 @@ eye.require = {
             newElement.innerHTML = newElement.innerHTML.replaceAll('#'+vars, object.vars[vars]);
         }
 
+        newElement.innerHTML = newElement.innerHTML.replaceAll('[id]', object.id);
+
         eye.require.check(object, 'onShown', false);
         eye.import.start(newElement);
 
