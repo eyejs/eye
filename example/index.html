@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye.js</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        eyelink {
+            width: 100%;
+            font-family: 'Courier New', Courier, monospace;
+            color: darkblue;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 10px auto;
+            max-width: 400px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- basic -->
+    <script>
+        var eye = {
+            go: {}
+        };
+    </script>
+    <script type="module" src="../eye/v0.10/eye.js"></script>
+
+    <!-- router -->
+    <script type="module" src="../eye/v0.10/modules/router/main.js"></script>
+    <script type="module">
+        eye.router.data = {
+            inicio: {id: 'inicio', file:'../objects/inicio.html', props:{autor: "rgmendezr", fecha:"30/10/1995"}, route: 'route=inicio'},
+            otro: {id: 'otro', file:'../objects/otro.html', props:{}, route: 'route=otro'}
+        };
+        eye.router.start('inicio');
+    </script>
+
+</body>
+
+</html>
