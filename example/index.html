@@ -40,14 +40,14 @@
             go: {}
         };
     </script>
-    <script type="module" src="../eye/v0.10/eye.js"></script>
+    <script type="module" src="../eye/v0.11/eye.js"></script>
 
     <!-- router -->
-    <script type="module" src="../eye/v0.10/modules/router/main.js"></script>
+    <script type="module" src="../eye/v0.11/modules/router/router.js"></script>
     <script type="module">
         eye.router.data = {
-            inicio: {id: 'inicio', file:'../objects/inicio.html', props:{autor: "rgmendezr", fecha:"30/10/1995"}, route: 'route=inicio'},
-            otro: {id: 'otro', file:'../objects/otro.html', props:{}, route: 'route=otro'}
+            inicio: {id: 'inicio', file:'../objects/inicio.html', props:{autor: "rgmendezr", fecha:"30/10/1995"}},
+            otro: {id: 'otro', file:'../objects/otro.html', props:{}}
         };
         eye.router.start('inicio');
     </script>

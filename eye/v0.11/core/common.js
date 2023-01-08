@@ -38,8 +38,19 @@ var common = {
     byClass: function (data) {
         return document.getElementsByClassName(data);
     },
-    obj: function (data) {
-        return eye.go[data];
+    obj: function (id, object = eye.go) {
+        if(eye.common.isDefined(object[id]) &&
+            object[id].id == id){
+                return object[id];
+        } else if(!eye.common.isDefined(object.id)){
+            for(var key in object){
+                var elle = eye.common.obj(id, object[key]);
+                if(elle != -1){
+                    return elle;
+                }
+            }
+        }
+        return -1;
     },
     objectLength: function (object) {
         var counter = 0;

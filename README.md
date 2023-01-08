@@ -21,7 +21,7 @@ Dare to join the project
 
 MIT
 
-Copyright (c) 2022, Raúl Méndez Rodríguez
+Copyright (c) 2023, Raúl Méndez Rodríguez
 
 See the [LICENSE](LICENSE) file for details
 

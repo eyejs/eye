@@ -53,13 +53,36 @@ var requi = {
                         object.id = object.id + "" + element.getAttribute('clon');
                     }
 
+                    object.route = "";
+                    if (element.hasAttribute('route')) {
+                        object.route = element.getAttribute('route');
+                    }
+
+
                     let newOb = eye.common.cloneObject(object);
-                    eye['go'][newOb.id] = eye.requi.show(newOb, wrapper, element);
-
+                    eye.requi.save({
+                        newOb: newOb,
+                        wrapper: wrapper,
+                        element: element
+                    });
                 }
-
             });
         });
+    },
+    save: function (data) {
+        var route = eye.go;
+        if (data.element.hasAttribute('route')) {
+            var txtRoute = data.element.getAttribute('route');
+            data.element.removeAttribute('route');
+            var arr = txtRoute.split(".");
+            for (var x = 0; x < arr.length; x++) {
+                if (!eye.common.isDefined(route[arr[x]])) {
+                    route[arr[x]] = {};
+                }
+                route = route[arr[x]];
+            }
+        }
+        route[data.newOb.id] = eye.requi.show(data.newOb, data.wrapper, data.element);
     },
     show: function (object, wrapper, element) {
         function attribts(element, wrapper, object) {
