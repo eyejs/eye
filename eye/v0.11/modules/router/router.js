@@ -1,7 +1,7 @@
 eye.link = function (id) {
     if (eye.common.isDefined(eye.router.data[id])) {
         var go = eye.router.data[id];
-        history.pushState(go, "", "index.html?p=" + go.id);
+        history.pushState(go, "", "./?page=" + go.id);
         eye.router.newTab(go);
     }
 };
@@ -33,17 +33,23 @@ eye.router = {
         document.body.appendChild(eyearea);
 
         window.onpopstate = (event) => {
-            history.pushState(event.state, "", "index.html?p=" + event.state.id);
+            history.pushState(event.state, "", "./?page=" + event.state.id);
             eye.router.back(event.state);
         };
 
-        history.pushState({
-            route: 'inicio'
-        }, "", "index.html");
-        history.pushState({
-            route: 'inicio'
-        }, "", "index.html");
+        var page = eye.common.getParameterByName("page");
 
-        eye.link(id);
+        if(page == ''){
+            page = id;
+        }
+        eye.link(page);
+
+        history.pushState({
+            route: page
+        }, "", "./?page=" + page);
+        history.pushState({
+            route: page
+        }, "", "./?page=" + page);
+
     }
 };
