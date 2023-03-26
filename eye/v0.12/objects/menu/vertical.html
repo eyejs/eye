@@ -1,0 +1,403 @@
+<wrapper class="menu-02">
+  <div id="vertical-menu" class="eye-vertical-menu-wrapper">
+    <div id="eye-vertical-menu-top" class="eye-vertical-menu-top">
+      <a id="brand-vertical" href="#" class="eye-vertical-menu-brand">#brand</a>
+      <div id="eye-vertical-menu-button" class="eye-vertical-menu-button">
+        <s class="bar"></s><s class="bar"></s>
+      </div>
+      <div id="eye-vertical-menu-image" class="eye-vertical-menu-image"></div>
+    </div>
+    <div
+      id="eye-vertical-menu-wrapper-list"
+      class="eye-vertical-menu-wrapper-list"
+    >
+      <div id="eye-vertical-menu-list" class="eye-vertical-menu-list"></div>
+    </div>
+  </div>
+</wrapper>
+
+<script code>
+  var code = {
+    version: "2.0",
+    core: "0.12",
+    id: "vertical-menu",
+    vars: {
+      brand: "Brand",
+      img: "",
+      links: {},
+      color: "#FFF",
+      background: "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
+      router: "true",
+      open: "false"
+    },
+    methods: {
+      toggleLinks: function () {
+        eye.common
+          .id("eye-vertical-menu-wrapper-list")
+          .classList.toggle("eye-vertical-menu-wrapper-list-active");
+        eye.common.id("eye-vertical-menu-button").classList.toggle("x");
+      },
+      removeClass: function () {
+        eye.common
+          .id("eye-vertical-menu-wrapper-list")
+          .classList.remove("eye-vertical-menu-wrapper-list-active");
+        eye.common.id("eye-vertical-menu-button").classList.remove("x");
+      },
+    },
+    onShown: function (object) {
+      eye.event(
+        eye.common.id("eye-vertical-menu-button"),
+        object,
+        "click",
+        "toggleLinks"
+      );
+      eye.common.id("brand-vertical").style.color = object.color;
+
+      eye.common.id("eye-vertical-menu-list").innerHTML = "";
+      for (let key in object.vars.links) {
+        if(object.vars.router === "true"){
+          eye.common.id("eye-vertical-menu-list").innerHTML +=
+          '<div class="eye-vertical-menu-item" onclick="eye.link(\'' +
+          object.vars.links[key] +
+          "');\">" +
+          key +
+          "</div>";
+        }else if(object.vars.router === "move"){
+          eye.common.id("eye-vertical-menu-list").innerHTML +=
+          '<div class="eye-vertical-menu-item" onclick="eye.common.move(\'' +
+          object.vars.links[key] +
+          "');\">" +
+          key +
+          "</div>";
+        }else{
+          eye.common.id("eye-vertical-menu-list").innerHTML +=
+          '<a href="' + object.vars.links[key] +'"><div class="eye-vertical-menu-item">' +
+          key +
+          '</div></a>';
+        }
+      }
+
+      eye.event(eye.common.id(object.id), object, "focusout", "removeClass");
+
+      eye.common.id("vertical-menu").style.background = object.vars.background;
+      eye.common.id("vertical-menu").style.backgroundSize = "400% 400%";
+      eye.common.id("eye-vertical-menu-top").style.background =
+        object.vars.background;
+      eye.common.id("eye-vertical-menu-top").style.backgroundSize = "400% 400%";
+
+      if(object.vars.img != ""){
+        eye.common.id("eye-vertical-menu-image").style.backgroundImage = "url("+object.vars.img+")";
+      }
+
+      if (
+        object.vars.background == "#FFF" ||
+        object.vars.background == "#FFFFFF" ||
+        object.vars.background == "white" ||
+        object.vars.background == "rgb(255,255,255)"
+      ) {
+        eye.common.id("brand-vertical").style.color = "#000";
+        for (
+          var i = 0, element;
+          (element = eye.common.byClass("eye-vertical-menu-item")[i]);
+          i++
+        ) {
+          element.style.color = "#000";
+        }
+        for (
+          var i = 0, element;
+          (element = eye.common.byClass("bar")[i]);
+          i++
+        ) {
+          element.style.backgroundColor = "#000";
+        }
+      }
+
+      if(object.vars.open == "true"){
+        eye.common.id("eye-vertical-menu-button").click();
+      }
+    },
+  };
+  code;
+</script>
+
+<style>
+  body {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: auto;
+    overflow: auto;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .menu-02 {
+    width: 100%;
+    height: 0px;
+    position: relative;
+  }
+
+  .eye-vertical-menu-wrapper {
+    position: relative;
+    top: 0px;
+    margin: 10px auto;
+    width: 96%;
+    max-width: 980px;
+    height: auto;
+    color: #fff;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 20s ease infinite;
+    padding-bottom: 2px;
+    font-family: sans-serif;
+    z-index: 800;
+    border-radius: 10px;
+    box-shadow: 4px 4px 16px 2px rgb(0 0 0 / 10%);
+  }
+
+  .eye-vertical-menu-wrapper-relative {
+    position: relative;
+  }
+
+  .eye-vertical-menu-wrapper-absolute {
+    position: absolute;
+  }
+
+  .eye-vertical-menu-top {
+    position: relative;
+    padding: 10px 0px;
+    padding-bottom: 10px;
+    z-index: 2;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 20s ease infinite;
+    border-radius: 10px;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .eye-vertical-menu-brand {
+    display: block;
+    text-align: center;
+    position: relative;
+    font-size: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .eye-vertical-menu-image {
+    display: none;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 150px;
+    margin: 20px auto;
+    background-image: url(./recursos/imagenes/logo.png);
+    border-radius: 5px;
+  }
+
+  .eye-vertical-menu-image:hover {
+    background-image: url(./recursos/imagenes/logo.gif);
+  }
+
+  .eye-vertical-menu-button {
+    width: 40px;
+    height: 40px;
+    display: block;
+    position: absolute;
+    top: 3px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 100;
+    background-color: #FFF;
+  }
+
+  .eye-vertical-menu-button .bar {
+    background-color: white;
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 100px;
+    position: absolute;
+    top: 20px;
+    right: 12px;
+  }
+
+  .eye-vertical-menu-button .bar,
+  .eye-vertical-menu-wrapper-list {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+
+  .eye-vertical-menu-button .bar:first-child {
+    -webkit-transform: translateY(-6px);
+    -moz-transform: translateY(-6px);
+    -ms-transform: translateY(-6px);
+    transform: translateY(-6px);
+  }
+
+  .eye-vertical-menu-button.x .bar {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .eye-vertical-menu-button.x .bar:first-child {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+
+  .eye-vertical-menu-wrapper-list {
+    position: relative;
+    margin-top: 0px;
+    left: 0px;
+    height: 0px;
+    display: block;
+    width: 100%;
+    overflow: auto;
+    z-index: -1;
+    text-align: center;
+  }
+
+  .eye-vertical-menu-wrapper-list::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0);
+  }
+
+  .eye-vertical-menu-wrapper-list::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .eye-vertical-menu-wrapper-list::-webkit-scrollbar-thumb {
+    opacity: 0;
+  }
+
+  .eye-vertical-menu-wrapper-list:hover::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    opacity: 1;
+  }
+
+  .eye-vertical-menu-wrapper-list-active {
+    margin-top: 0px;
+    height: auto;
+    margin-bottom: 0px;
+  }
+
+  .eye-vertical-menu-list {
+    display: flex;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .eye-vertical-menu-item {
+    padding: 15px 25px;
+    font-size: 15px;
+    text-align: center;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+
+  @media (min-width: 992px) {
+    body {
+      position: absolute;
+      top: 0px;
+      left: 20%;
+      width: 80%;
+      height: 100%;
+      overflow: auto;
+    }
+
+    .menu-02 {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+
+    .eye-vertical-menu-wrapper {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      width: 20%;
+      height: 100%;
+      color: #fff;
+      overflow-y: auto;
+      box-shadow: 4px 4px 16px 2px rgb(0 0 0 / 10%);
+    }
+
+    .eye-vertical-menu-top {
+      position: relative;
+      padding: 10px 0px;
+      padding-bottom: 10px;
+      z-index: 2;
+      border: 0px;
+      background: transparent;
+      animation: none;
+      margin-top: 100px;
+    }
+
+    .eye-vertical-menu-brand {
+      display: none;
+    }
+
+    .eye-vertical-menu-image {
+      display: block;
+    }
+
+    .eye-vertical-menu-button {
+      display: none;
+    }
+
+    .eye-vertical-menu-wrapper-list {
+      border: 0px;
+      position: relative;
+      height: auto;
+      display: block;
+      width: 70%;
+      overflow: none;
+      background-color: transparent;
+      z-index: -1;
+      text-align: center;
+      margin: auto;
+    }
+
+    .eye-vertical-menu-list {
+      display: block;
+      margin-bottom: 50px;
+    }
+
+    .eye-vertical-menu-item {
+      padding: 10px 0px;
+      width: 100%;
+      font-size: 15px;
+      text-align: center;
+      color: #fff;
+    }
+  }
+</style>

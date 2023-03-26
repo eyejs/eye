@@ -1,4 +1,11 @@
 var common = {
+    move: function (name) {
+        const offsetTop = document.getElementById(name).offsetTop;
+        scroll({
+          top: offsetTop,
+          behavior: "smooth"
+        });
+    },
     existFunction: function (object, nameFunction) {
         if (typeof object === 'object') {
             if (typeof object[nameFunction] === "function") {
@@ -54,7 +61,7 @@ var common = {
     },
     objectLength: function (object) {
         var counter = 0;
-        for (prop in object) {
+        for (const prop in object) {
             counter++;
         }
         return counter;
@@ -83,7 +90,7 @@ var common = {
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
         var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
         results = regex.exec(location.search);
-        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        return results === null ? -1 : decodeURIComponent(results[1].replace(/\+/g, " "));
     },
     check: {
         start: function (event, type, id) {
@@ -103,6 +110,7 @@ var common = {
                     document.getElementById(id).value = document.getElementById(id).value.replace(/[0-9',.$!#%&()=?¡\-\/<>@°"|{}_:;´+\[\]¿¨\*àèìòùÀÈÌÒÙâêîôûÂÊÎÔÛÑñäëïöüÄËÏÖÜ☺☻♥♦♣♠•◘◙♂♀♪♫☼►◄↕‼¶§▬↨↑↓→←∟↔▲▼¢]/g, '');
                     break;
                 case "pass":
+                case "false":
                     break;
                 default:
                     document.getElementById(id).value = document.getElementById(id).value.replace(/['<>$!#%&()=\-\/°"|{}_´+\[\]¨\*àèìòùÀÈÌÒÙâêîôûÂÊÎÔÛäëïöüÄËÏÖÜ☺☻♥♦♣♠•◘◙♂♀♪♫☼►◄↕‼¶§▬↨↑↓→←∟↔▲▼]/g, '');

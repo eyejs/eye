@@ -39,7 +39,7 @@ eye.router = {
 
         var page = eye.common.getParameterByName("page");
 
-        if(page == ''){
+        if(page == -1){
             page = id;
         }
         eye.link(page);

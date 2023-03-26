@@ -39,7 +39,13 @@ var requi = {
                 if (eye.common.isDefined(style)) {
                     let styleTag = document.createElement('style');
                     styleTag.innerHTML = style.innerHTML;
-                    document.head.appendChild(styleTag);
+                    if((document.body.getElementsByTagName('eyearea')[0] == null || 
+                    document.body.getElementsByTagName('eyearea')[0] == 'undefined') ||
+                    (element.hasAttribute('router') && element.getAttribute('router') == "false")){
+                        document.head.appendChild(styleTag);
+                    }else{
+                        document.body.getElementsByTagName('eyearea')[0].appendChild(styleTag);
+                    }
                     eye.requi.check(object, 'onLoadedStyles');
                 }
 
@@ -57,7 +63,6 @@ var requi = {
                     if (element.hasAttribute('route')) {
                         object.route = element.getAttribute('route');
                     }
-
 
                     let newOb = eye.common.cloneObject(object);
                     eye.requi.save({
@@ -142,6 +147,7 @@ var requi = {
         }
 
         newElement.innerHTML = newElement.innerHTML.replaceAll('[id]', object.id);
+        newElement.innerHTML = newElement.innerHTML.replaceAll('[root]', eye.root);
 
         eye.requi.check(object, 'onShown', false);
         eye.eImport.start(newElement);

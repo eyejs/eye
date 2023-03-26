@@ -1,10 +1,7 @@
-# EYE.JS v0.11
+# EYE.JS v0.12
 
 Wanting to help with the way a website is programmed, I have written a small framework for code reuse and use of
 previously created customizable HTML objects. It is really easy using eye objects.
-
-
-[Example](https://almendro.cr/eyejs/example/)
 
 
 Soon more details and examples
