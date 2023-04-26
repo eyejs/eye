@@ -1,4 +1,17 @@
-var requi = {
+/**
+ * Objeto que contiene funciones para gestionar y cargar componentes.
+ * @namespace requi
+ */
+const requi = {
+    /**
+     * Verifica si existe un objeto y una función dentro de ese objeto y la ejecuta.
+     * @function check
+     * @memberof requi
+     * @param {Object} object - El objeto que contiene la función.
+     * @param {string} nameFunction - El nombre de la función que se desea ejecutar.
+     * @param {boolean} [deleteFunction=true] - Indica si se debe eliminar la función después de ejecutarla.
+     * @param {*} [data] - Datos que se pasan como parámetro a la función.
+     */
     check: function (object, nameFunction, deleteFunction = true, data) {
         if (eye.common.isDefined(object)) {
             if (eye.common.existFunction(object, nameFunction)) {
@@ -12,6 +25,13 @@ var requi = {
             }
         }
     },
+    /**
+     * Inicia la carga de un componente a través de una URL y un elemento.
+     * @function start
+     * @memberof requi
+     * @param {string} url - La URL del componente a cargar.
+     * @param {Element} element - El elemento en el que se cargará el componente.
+     */
     start: function (url, element) {
 
         fetch(url).then(function (response) {
@@ -74,6 +94,12 @@ var requi = {
             });
         });
     },
+    /**
+     * Guarda el componente cargado en la ruta correspondiente del objeto `eye.go`.
+     * @function save
+     * @memberof requi
+     * @param {Object} data - Objeto con datos para guardar y mostrar el componente.
+     */
     save: function (data) {
         var route = eye.go;
         if (data.element.hasAttribute('route')) {
@@ -89,6 +115,15 @@ var requi = {
         }
         route[data.newOb.id] = eye.requi.show(data.newOb, data.wrapper, data.element);
     },
+    /**
+     * Muestra el componente cargado en el elemento especificado.
+     * @function show
+     * @memberof requi
+     * @param {Object} object - El objeto del componente cargado.
+     * @param {Element} wrapper - El elemento contenedor del componente.
+     * @param {Element} element - El elemento en el que se cargará el componente.
+     * @returns {Object} - Devuelve el objeto del componente.
+     */
     show: function (object, wrapper, element) {
         function attribts(element, wrapper, object) {
             if (element.hasAttribute("props")) {

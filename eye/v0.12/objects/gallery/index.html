@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eye Gallery</title>
+    <style>
+      /* Añade aquí el código CSS para el objeto eyeGallery */
+    </style>
+  </head>
+  <body>
+    <h1>Eye Gallery Example</h1>
+    <eye
+      id="gallery"
+      src="./object.html"
+      props='{
+        "images": [
+            {"id": "image1", "src": "https://example.com/image1.jpg"},
+            {"id": "image2", "src": "https://example.com/image2.jpg"},
+            {"id": "image3", "src": "https://example.com/image3.jpg"},
+            {"id": "image4", "src": "https://example.com/image4.jpg"},
+            {"id": "image5", "src": "https://example.com/image5.jpg"}
+        ],
+        "columns": "3"
+    }'
+    ></eye>
+
+    <script>
+      var eye = {
+        go: {},
+        root: "https://goofy.dog/",
+      };
+    </script>
+    <script
+      type="module"
+      src="https://goofy.dog/eye/v0.12/eye.js"
+    ></script>
+
+  </body>
+</html>

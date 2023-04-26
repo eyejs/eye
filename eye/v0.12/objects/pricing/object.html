@@ -1,0 +1,202 @@
+<wrapper class="eye-pricing-wrapper">
+  <h2 class="eye-services-title">#title</h2>
+  <div id="[id]-eye-pricing" class="eye-pricing"></div>
+</wrapper>
+
+<script code>
+  var eyePricing = {
+    version: "1.0",
+    core: "0.12",
+    id: "eye-pricing",
+    vars: {
+      // Datos por defecto
+      title: "Title 1",
+      services: [
+        {
+          icon: "https://example.com/icon1.svg",
+          name: "Servicio 1",
+          features: [
+            "Característica 1",
+            "Característica 2",
+            "Característica 3",
+          ],
+          price: "9.99",
+          ctaText: "Comprar",
+          ctaColor: "#1abc9c",
+          ctaUrl: "https://example.com/service1",
+        },
+        {
+          icon: "https://example.com/icon2.svg",
+          name: "Servicio 2",
+          features: [
+            "Característica 1",
+            "Característica 2",
+            "Característica 3",
+          ],
+          price: "19.99",
+          ctaText: "Comprar",
+          ctaColor: "#3498db",
+          ctaUrl: "https://example.com/service2",
+        },
+        // Agregar más servicios por defecto aquí
+      ],
+    },
+    onShown: function (object) {
+      const pricing = eye.common.id(object.id + "-eye-pricing");
+
+      object.vars.services.forEach((service) => {
+        const serviceWrapper = document.createElement("div");
+        serviceWrapper.className = "eye-service";
+
+        const icon = document.createElement("img");
+        icon.src = service.icon;
+        icon.className = "eye-service-icon";
+        serviceWrapper.appendChild(icon);
+
+        const name = document.createElement("h3");
+        name.className = "eye-service-title";
+        name.textContent = service.name;
+        serviceWrapper.appendChild(name);
+
+        const featureList = document.createElement("ul");
+        featureList.className = "eye-feature-list";
+        service.features.forEach((feature) => {
+          const li = document.createElement("li");
+          li.textContent = feature;
+          featureList.appendChild(li);
+        });
+        serviceWrapper.appendChild(featureList);
+
+        const price = document.createElement("span");
+        price.className = "eye-price";
+        price.textContent = `$${service.price}`;
+        serviceWrapper.appendChild(price);
+
+        const cta = document.createElement("a");
+        cta.className = "eye-cta";
+        cta.textContent = service.ctaText;
+        cta.style.backgroundColor = service.ctaColor;
+        cta.href = service.ctaUrl;
+        serviceWrapper.appendChild(cta);
+
+        pricing.appendChild(serviceWrapper);
+      });
+    },
+  };
+  eyePricing;
+</script>
+
+<style>
+  * {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .eye-pricing-wrapper {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .eye-services-title {
+    width: 25%;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 280px;
+  }
+
+  .eye-service {
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 10px 5%;
+    margin: 20px auto;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .eye-service-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .eye-service-title {
+    text-align: center;
+  }
+
+  .eye-feature-list {
+    list-style-type: none;
+    padding: 0;
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .eye-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .eye-cta {
+    display: inline-block;
+    background-color: #1abc9c;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+
+  .eye-cta:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-3px);
+    color: #333;
+  }
+
+  .eye-service:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .eye-pricing-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .eye-services-title {
+      text-align: center;
+      margin: 20px auto 15px;
+      width: 100%;
+    }
+
+    .eye-pricing-wrapper {
+      flex-direction: column;
+    }
+
+    .eye-service {
+      flex-direction: column;
+      min-width: 320px;
+      margin-right: auto;
+      margin-left: auto;
+      padding: 20px 5%;
+      margin: auto;
+      width: 80%;
+      margin-bottom: 20px;
+    }
+  }
+</style>

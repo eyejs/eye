@@ -4,7 +4,7 @@ Wanting to help with the way a website is programmed, I have written a small fra
 previously created customizable HTML objects. It is really easy using eye objects.
 
 
-Soon more details and examples
+[Documentación completa](https://developer.goofy.dog/eye.js/)
 
 
 ## Authors

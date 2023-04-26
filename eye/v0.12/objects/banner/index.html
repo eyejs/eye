@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Banner Example</title>
+</head>
+<body>
+    <eye
+      id="banner"
+      src="./object.html"
+      props='{
+        "title": "Bienvenido a nuestro sitio",
+        "subtitle": "Descubre lo que podemos hacer por ti",
+        "botonText": "Contáctenos", 
+        "href": "https://example.com",
+        "videoSrc": "./video.mp4"
+      }'
+    ></eye>
+
+    <script>
+        var eye = {
+          go: {},
+          root: "https://goofy.dog/",
+        };
+    </script>
+    <script
+      type="module"
+      src="https://goofy.dog/eye/v0.12/eye.js"
+    ></script>
+
+    <h2>Algunos de nuestros servicios</h2>
+    <p>Aquí puedes agregar información sobre los servicios que ofreces.</p>
+</body>
+</html>

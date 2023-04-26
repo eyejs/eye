@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-commerce Plans</title>
+  </head>
+  <body>
+
+    <eye
+      id="personal"
+      src="./object.html"
+      props='{
+        "title": "Personas",
+        "services": [
+        {
+          "icon": "./icon1.png",
+          "name": "Plan Básico",
+          "features": [
+            "3 productos",
+            "Soporte básico",
+            "1 GB de almacenamiento"
+          ],
+          "price": "9.99",
+          "ctaText": "Comprar",
+          "ctaUrl": "https://example.com/basic"
+        },
+        {
+            "icon": "./icon2.png",
+          "name": "Plan Estándar",
+          "features": [
+            "10 productos",
+            "Soporte prioritario",
+            "5 GB de almacenamiento"
+          ],
+          "price": "19.99",
+          "ctaText": "Comprar",
+          "ctaUrl": "https://example.com/standard"
+        },
+        {
+            "icon": "./icon3.png",
+          "name": "Plan Premium",
+          "features": [
+            "Productos ilimitados",
+            "Soporte premium",
+            "20 GB de almacenamiento"
+          ],
+          "price": "49.99",
+          "ctaText": "Comprar",
+          "ctaUrl": "https://example.com/premium"
+        }
+      ]
+    }'
+    ></eye>
+
+    <eye
+      id="business"
+      src="./object.html"
+      props='{
+        "title": "Empresas",
+        "services": [
+        {
+            "icon": "./icon4.png",
+          "name": "Plan Básico",
+          "features": [
+            "10 productos",
+            "Soporte básico",
+            "5 GB de almacenamiento"
+          ],
+          "price": "29.99",
+          "ctaText": "Comprar",
+          "ctaUrl": "https://example.com/business-basic"
+        },
+        {
+            "icon": "./icon5.png",
+          "name": "Plan Estándar",
+          "features": [
+            "50 productos",
+            "Soporte prioritario",
+            "25 GB de almacenamiento"
+          ],
+          "price": "59.99",
+          "ctaText": "Comprar",
+          "ctaUrl": "https://example.com/business-standard"
+        },
+        {
+            "icon": "./icon6.png",
+          "name": "Plan Premium",
+          "features": [
+            "Productos ilimitados",
+            "Soporte premium",
+            "100 GB de almacenamiento"
+          ],
+          "price": "99.99",
+          "ctaText": "Comprar",
+          "ctaUrl": "https://example.com/business-premium"
+        }
+      ]
+    }'
+    ></eye>
+
+    <script>
+      var eye = {
+        go: {},
+        root: "https://goofy.dog/",
+      };
+    </script>
+    <script type="module" src="https://goofy.dog/eye/v0.12/eye.js"></script>
+  </body>
+</html>

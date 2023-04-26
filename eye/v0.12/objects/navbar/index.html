@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Navigation Bar Example</title>
+</head>
+<body>
+    <eye
+      id="nav-bar"
+      src="./object.html"
+      props='{
+        "links": [
+          {"text": "Home", "href": "#home"},
+          {"text": "About", "href": "#about"},
+          {"text": "Services", "href": "#services"},
+          {"text": "Contact", "href": "#contact"}
+        ]
+      }'
+    ></eye>
+
+    <script>
+        var eye = {
+          go: {},
+          root: "https://goofy.dog/",
+        };
+    </script>
+    <script
+      type="module"
+      src="https://goofy.dog/eye/v0.12/eye.js"
+    ></script>
+
+    <h1>Welcome to My Website</h1>
+    <p>Use the navigation bar to browse the site.</p>
+</body>
+</html>

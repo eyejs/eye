@@ -1,0 +1,118 @@
+<wrapper class="eye-navbar-wrapper">
+    <nav id="eye-navbar" class="eye-navbar">
+      <div id="eye-navbar-menu" class="eye-navbar-menu">
+        <div class="eye-navbar-item">
+          <a href="#">Link 1</a>
+        </div>
+        <!-- Añadir más enlaces aquí -->
+      </div>
+      <div id="eye-navbar-toggler" class="eye-navbar-toggler">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </wrapper>
+  
+  <script code>
+    var eyeNavbar = {
+      version: "1.0",
+      core: "0.12",
+      id: "eye-navbar",
+      vars: {
+        links: [
+          { text: "Link 1", href: "#" },
+          { text: "Link 2", href: "#" },
+          { text: "Link 3", href: "#" },
+          // Añadir más enlaces aquí
+        ],
+      },
+      onShown: function (object) {
+        const menu = eye.common.id("eye-navbar-menu");
+        menu.innerHTML = "";
+        const toggler = eye.common.id("eye-navbar-toggler");
+  
+        object.vars.links.forEach((link) => {
+          const item = document.createElement("div");
+          item.className = "eye-navbar-item";
+          const a = document.createElement("a");
+          a.href = link.href;
+          a.textContent = link.text;
+          item.appendChild(a);
+          menu.appendChild(item);
+        });
+  
+        toggler.addEventListener("click", () => {
+          menu.classList.toggle("eye-navbar-menu-active");
+        });
+      },
+    };
+    eyeNavbar;
+  </script>
+  
+  <style>
+    .eye-navbar-wrapper {
+      font-family: Arial, sans-serif;
+      position: relative;
+    }
+  
+    .eye-navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 0.5rem 1rem;
+    }
+  
+    .eye-navbar-menu {
+      display: flex;
+      gap: 1rem;
+    }
+  
+    .eye-navbar-item a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+  
+    .eye-navbar-item a:hover {
+      color: #ccc;
+    }
+  
+    .eye-navbar-toggler {
+      display: none;
+      flex-direction: column;
+      gap: 3px;
+      cursor: pointer;
+    }
+  
+    .eye-navbar-toggler span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background-color: white;
+      transition: all 0.3s;
+    }
+  
+    @media (max-width: 768px) {
+      .eye-navbar-menu {
+        display: none;
+        flex-direction: column;
+        gap: 0.5rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #333;
+        width: 100%;
+      }
+  
+      .eye-navbar-menu.eye-navbar-menu-active {
+        display: flex;
+      }
+  
+      .eye-navbar-toggler {
+        display: flex;
+      }
+    }
+  </style>
+  

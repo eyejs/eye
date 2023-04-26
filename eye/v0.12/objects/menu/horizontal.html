@@ -1,7 +1,7 @@
 <wrapper class="menu-01">
     <div id="horizontal-menu" class="eye-horizontal-menu-wrapper">
         <div id="eye-horizontal-menu-top" class="eye-horizontal-menu-top">
-            <a id="brand" href="#" class="eye-horizontal-menu-brand">#brand</a>
+            <a id="brand" href="#" class="eye-horizontal-menu-brand">Brand</a>
             <div id="eye-horizontal-menu-button" class="eye-horizontal-menu-button">
             <s class="bar"></s><s class="bar"></s>
             </div>
@@ -26,6 +26,7 @@
       links: {},
       background: "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
       color: "white",
+      open: "false"
     },
     methods: {
       toggleLinks: function () {
@@ -43,6 +44,7 @@
     },
     onShown: function (object) {
       eye.event(eye.common.id("eye-horizontal-menu-button"), object, "click", "toggleLinks");
+      eye.common.id("brand").innerHTML = object.vars.brand;
 
       for (let key in object.vars.links) {
         eye.common.id("eye-menu-list").innerHTML +=
@@ -68,6 +70,9 @@
       }
       for (var i = 0, element; (element = eye.common.byClass("bar")[i]); i++) {
         element.style.backgroundColor = object.vars.color;
+      }
+      if(object.vars.open == "true"){
+        eye.common.id("eye-horizontal-menu-button").click();
       }
     },
   };
